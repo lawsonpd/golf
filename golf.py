@@ -3,8 +3,9 @@ import itertools
 
 class Deck:
     def __init__(self):
-        self.draw_pile = None
-        self.discard_pile = None
+        self.cards = [f'{r}{s}' for r in 'A23456789TJQK' for s in 'DHCS']
+        self.draw_pile = []
+        self.discard_pile = []
 
     def deal_hands(self, hands):
         pass
@@ -13,8 +14,12 @@ class Hand:
     def __init__(self):
         self.cards = {} # Key, value: card, known/unknown
 
-    def __gt__(self, value):
-        # May use for comparisons in max/allmax
+    def __lt__(self, other_hand):
+        "Compare this hand with another hand"
+        pass
+
+    def __eq__(self, other_hand):
+        "Compare this hand with another hand"
         pass
 
     def swap_card(self, new, old):
