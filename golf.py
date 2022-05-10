@@ -4,16 +4,19 @@ import itertools
 class Deck:
     def __init__(self):
         self.cards = [f'{r}{s}' for r in 'A23456789TJQK' for s in 'DHCS']
-        self.draw_pile = []
+        random.shuffle(self.cards)
+        self.draw_pile = self.cards
         self.discard_pile = []
 
-    def deal_hands(self, hands, k=4):
-        pass
+    def deal_hands(self, *hands, k=4):
+        for i in range(k):
+            for hand in hands:
+                hand.cards.append(self.cards.pop())
 
 class Hand:
     def __init__(self):
         self.cards = []
-        self.known_cards = set()
+        self.known_cards = {0,1}
 
     def __lt__(self, other_hand) -> bool:
         pass
@@ -31,10 +34,12 @@ class Hand:
                 cards.append('X')
         return ' '.join(card for card in cards)
 
-    def swap_card(self, new:str, old:int) -> None:
+    def swap_card(self, new:str, old:int, deck) -> None:
         real_i = old-1 # Assume user gives indices starting at 1
+        discarded = self.cards[real_i]
         self.cards[real_i] = new # Assign new card at given index
         self.known_cards.add(real_i) # Record that added card (index) is now known
+        deck.discard_pile.append(discarded)
 
     def hand_score(self) -> int:
         return sum([v for v, s in self.cards])
