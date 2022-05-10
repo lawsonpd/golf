@@ -12,7 +12,8 @@ class Deck:
 
 class Hand:
     def __init__(self):
-        self.cards = {} # Key, value: card, known/unknown
+        self.cards = []
+        self.known_cards = set()
 
     def __lt__(self, other_hand):
         pass
@@ -21,8 +22,14 @@ class Hand:
         pass
 
     def __repr__(self):
-        ""
-        pass
+        "Reveals only known cards in hand"
+        cards = []
+        for i in range(len(self.cards)):
+            if i in self.known_cards:
+                cards.append(self.cards[i])
+            else:
+                cards.append('X')
+        return ' '.join(card for card in cards)
 
     def swap_card(self, new, old):
         pass
