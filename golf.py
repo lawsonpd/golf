@@ -7,7 +7,7 @@ class Deck:
         self.draw_pile = []
         self.discard_pile = []
 
-    def deal_hands(self, hands):
+    def deal_hands(self, hands, k=4):
         pass
 
 class Hand:
@@ -15,11 +15,13 @@ class Hand:
         self.cards = {} # Key, value: card, known/unknown
 
     def __lt__(self, other_hand):
-        "Compare this hand with another hand"
         pass
 
     def __eq__(self, other_hand):
-        "Compare this hand with another hand"
+        pass
+
+    def __repr__(self):
+        ""
         pass
 
     def swap_card(self, new, old):
@@ -33,6 +35,10 @@ def golf(hands):
     pass
 
 def allmax(hands):
+    pass
+
+def sort_hand(hand):
+    "Sort a hand by card ranks"
     pass
 
 # player_turn = itertools.cycle(range(num_players))
