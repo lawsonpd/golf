@@ -15,13 +15,13 @@ class Hand:
         self.cards = []
         self.known_cards = set()
 
-    def __lt__(self, other_hand):
+    def __lt__(self, other_hand) -> bool:
         pass
 
-    def __eq__(self, other_hand):
+    def __eq__(self, other_hand) -> bool:
         pass
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         "Reveals only known cards in hand"
         cards = []
         for i in range(len(self.cards)):
@@ -31,10 +31,12 @@ class Hand:
                 cards.append('X')
         return ' '.join(card for card in cards)
 
-    def swap_card(self, new, old):
-        pass
+    def swap_card(self, new:str, old:int) -> None:
+        real_i = old-1 # Assume user gives indices starting at 1
+        self.cards[real_i] = new # Assign new card at given index
+        self.known_cards.add(real_i) # Record that added card (index) is now known
 
-    def hand_score(self):
+    def hand_score(self) -> int:
         return sum([v for v, s in self.cards])
 
 def golf(hands):
