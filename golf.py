@@ -13,6 +13,15 @@ class Deck:
             for hand in hands:
                 hand.cards.append(self.cards.pop())
 
+    def card_from_draw_pile(self):
+        return self.draw_pile.pop()
+
+    def card_from_discard_pile(self):
+        return self.discard_pile.pop()
+
+    def discard(self, card):
+        self.discard_pile.append(card)
+
 class Hand:
     def __init__(self):
         self.cards = []
@@ -39,10 +48,17 @@ class Hand:
         discarded = self.cards[real_i]
         self.cards[real_i] = new # Assign new card at given index
         self.known_cards.add(real_i) # Record that added card (index) is now known
-        deck.discard_pile.append(discarded)
+        deck.discard(discarded)
 
     def hand_score(self) -> int:
         return sum([v for v, s in self.cards])
+
+    def draw_card(self, deck):
+        "Draw card from draw pile"
+        return deck.card_from_draw_pile()
+
+    def take_discard(self, deck):
+        self.swap_card()
 
 def golf(hands):
     # return allmax(hands, key=hand_score)
