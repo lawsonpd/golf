@@ -25,30 +25,23 @@ class Deck:
 class Hand:
     def __init__(self):
         self.cards = []
-        self.known_cards = {0,1}
 
     def __lt__(self, other_hand) -> bool:
+        # TODO Extract value components of cards, sort, and compare pairwise by index
         pass
 
     def __eq__(self, other_hand) -> bool:
+        # TODO Extract value components of cards, sort, and compare pairwise by index
         pass
 
     def __repr__(self) -> str:
-        "Reveals only known cards in hand"
-        cards = []
-        for i in range(len(self.cards)):
-            if i in self.known_cards:
-                cards.append(self.cards[i])
-            else:
-                cards.append('X')
-        return ' '.join(card for card in cards)
+        return ' '.join(card for card in self.cards)
 
-    def swap_card(self, new:str, old:int, deck) -> None:
-        real_i = old-1 # Assume user gives indices starting at 1
-        discarded = self.cards[real_i]
-        self.cards[real_i] = new # Assign new card at given index
-        self.known_cards.add(real_i) # Record that added card (index) is now known
-        deck.discard(discarded)
+    def swap_card(self, new:str, i:int) -> str:
+        "Assign card `new` at index `i` and return card previously at index `i`."
+        discarded = self.cards[i]
+        self.cards[i] = new
+        return discarded
 
     def hand_score(self) -> int:
         return sum([v for v, s in self.cards])
