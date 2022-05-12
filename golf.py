@@ -22,6 +22,10 @@ class Deck:
     def card_to_discard_pile(self, card):
         self.discard_pile.append(card)
 
+    def sort(self):
+        "Sort a hand by card ranks"
+        pass
+
 class Hand:
     def __init__(self):
         self.cards = []
@@ -51,10 +55,6 @@ def golf(hands):
     pass
 
 def allmax(hands):
-    pass
-
-def sort_hand(hand):
-    "Sort a hand by card ranks"
     pass
 
 # player_turn = itertools.cycle(range(num_players))
