@@ -19,7 +19,7 @@ class Deck:
     def card_from_discard_pile(self):
         return self.discard_pile.pop()
 
-    def discard(self, card):
+    def card_to_discard_pile(self, card):
         self.discard_pile.append(card)
 
 class Hand:
