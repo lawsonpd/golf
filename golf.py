@@ -22,20 +22,16 @@ class Deck:
     def card_to_discard_pile(self, card):
         self.discard_pile.append(card)
 
-    def sort(self):
-        "Sort a hand by card ranks"
-        pass
-
 class Hand:
     def __init__(self):
         self.cards = []
 
     def __lt__(self, other_hand) -> bool:
-        # TODO Extract value components of cards, sort, and compare pairwise by index
+        "Compare this hand and other hand by card values (i.e. ignore suits)."
         pass
 
     def __eq__(self, other_hand) -> bool:
-        # TODO Extract value components of cards, sort, and compare pairwise by index
+        "Compare this hand and other hand by card values (i.e. ignore suits)."
         pass
 
     def __repr__(self) -> str:
@@ -49,6 +45,10 @@ class Hand:
 
     def hand_score(self) -> int:
         return sum([v for v, s in self.cards])
+
+    def sort(self):
+        "Sort a hand by card ranks"
+        pass
 
 def golf(hands):
     # return allmax(hands, key=hand_score)
