@@ -27,11 +27,11 @@ class Hand:
         self.cards = []
 
     def __lt__(self, other_hand) -> bool:
-        "Compare this hand and other hand by card values (i.e. ignore suits)."
+        "Compare this hand and other hand by card ranks (i.e. ignore suits)."
         pass
 
     def __eq__(self, other_hand) -> bool:
-        "Compare this hand and other hand by card values (i.e. ignore suits)."
+        "Compare this hand and other hand by card ranks (i.e. ignore suits)."
         pass
 
     def __repr__(self) -> str:
@@ -47,7 +47,7 @@ class Hand:
         return sum([v for v, s in self.cards])
 
     def sort(self):
-        "Sort a hand by card ranks"
+        "Sort a hand by card ranks."
         pass
 
 def golf(hands):
