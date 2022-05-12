@@ -13,10 +13,10 @@ class Deck:
             for hand in hands:
                 hand.cards.append(self.cards.pop())
 
-    def card_from_draw_pile(self):
+    def card_from_draw_pile(self) -> str:
         return self.draw_pile.pop()
 
-    def card_from_discard_pile(self):
+    def card_from_discard_pile(self) -> str:
         return self.discard_pile.pop()
 
     def card_to_discard_pile(self, card):
