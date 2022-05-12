@@ -46,13 +46,6 @@ class Hand:
     def hand_score(self) -> int:
         return sum([v for v, s in self.cards])
 
-    def draw_card(self, deck):
-        "Draw card from draw pile"
-        return deck.card_from_draw_pile()
-
-    def take_discard(self, deck):
-        self.swap_card()
-
 def golf(hands):
     # return allmax(hands, key=hand_score)
     pass
